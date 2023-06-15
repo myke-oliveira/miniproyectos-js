@@ -28,7 +28,7 @@
             <p class="card-text p-2">¡Noche inolvidable con Carlos Vives en concierto! ¡Música, alegría y emociones garantizadas! ¡No te lo pierdas! 🎶🎉</p>
             <div class="p-2">
               <strong>$ 20,00</strong>
-              <input type="number" class="form-control js-qtd" min="0" max="10" name="" id="">
+              <input type="number" class="form-control js-qtd" min="0" max="10" data-unit-value="20" data-key="carlos-vives" data-description="Carlos Vives">
             </div>
           </div>
         </div>
@@ -41,7 +41,7 @@
             <p class="card-text p-2">¡Prepárate para una noche electrizante con Shakira en concierto! ¡Música, baile y energía desbordante te esperan! ¡No te lo puedes perder! 🎶🔥</p>
             <div class="p-2">
               <strong>$ 30,00</strong>
-              <input type="number" class="form-control js-qtd" min="0" max="10" name="" id="">
+              <input type="number" class="form-control js-qtd" min="0" max="10" data-unit-value="30" data-key="shakira" data-description="Shakira">
             </div>
           </div>
         </div>
@@ -54,7 +54,7 @@
             <p class="card-text p-2">¡Prepárate para una noche llena de samba y romance con Sorriso Maroto y Dilsinho en concierto! ¡Música, alegría y emociones garantizadas! ¡No te lo puedes perder! 🎶🎉</p>
             <div class="p-2">
               <strong>$ 22,00</strong>
-              <input type="number" class="form-control js-qtd" min="0" max="10" name="" id="">
+              <input type="number" class="form-control js-qtd" min="0" max="10" data-unit-value="22" data-key="dilsinho" data-description="Sorriso Maroto e Dilsinho">
             </div>
           </div>
         </div>
@@ -67,7 +67,7 @@
             <p class="card-text p-2">¡Vive una noche inolvidable llena de samba y la poderosa voz de Alcione en concierto! ¡Música, pasión y emociones aseguradas! ¡No te lo pierdas! 🎶🔥</p>
             <div class="p-2">
               <strong>$ 28,00</strong>
-              <input type="number" class="form-control js-qtd" min="0" max="10" name="" id="">
+              <input type="number" class="form-control js-qtd" min="0" max="10" data-unit-value="28" data-key="alcione" data-description="Alcione">
             </div>
           </div>
         </div>
@@ -75,5 +75,28 @@
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script>
+    const cart = {}
+    let total = 0
+
+    document.querySelectorAll('.js-qtd').forEach(
+      input => input.addEventListener('change', (event) => {
+        const unitValue = (Number) (event.target.dataset.unitValue)
+        const description = event.target.dataset.description
+        const key = event.target.dataset.key
+        const qtd = (Number) (event.target.value);
+
+        const item = {
+          description,
+          qtd,
+          unitValue,
+          price: qtd * unitValue
+        }
+
+        cart[key] = item;
+        total += item.price;
+      })
+    )
+  </script>
 </body>
 </html>
