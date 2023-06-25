@@ -28,7 +28,7 @@
   },
   {
     "id": 4,
-    "username": "Sofía",
+    "username": "Carlos",
     "body": "La vida es demasiado corta para no disfrutarla al máximo. ¡Atrévete a hacer lo que amas y sé feliz!",
     "date": "2023-06-23",
     "likes": 15,
@@ -37,147 +37,147 @@
   },
   {
     "id": 5,
-    "username": "Sofía",
+    "username": "Ana",
     "body": "No importa cuántas veces caigas, lo importante es cuántas veces te levantes. ¡Sigue adelante y lucha por tus sueños!",
     "date": "2023-06-23",
     "likes": 15,
     "retweets": 3,
-    "title": "Recomendación de libros"
+    "title": "¡Sigue adelante y lucha por tus sueños!"
   },
   {
     "id": 6,
-    "username": "Sofía",
+    "username": "Juan",
     "body": "El éxito no es el final, el fracaso no es fatal: lo que cuenta es tener el coraje de continuar.",
     "date": "2023-06-23",
     "likes": 15,
     "retweets": 3,
-    "title": "Recomendación de libros"
+    "title": "Coraje de continuar"
   },
   {
     "id": 7,
-    "username": "Sofía",
+    "username": "María",
     "body": "A veces, las mejores decisiones son las más difíciles de tomar. Confía en ti mismo y sigue tu instinto.",
     "date": "2023-06-23",
     "likes": 15,
     "retweets": 3,
-    "title": "Recomendación de libros"
+    "title": "Confía en ti mismo"
   },
   {
     "id": 8,
-    "username": "Sofía",
+    "username": "Luisa",
     "body": "La felicidad se encuentra en las cosas simples de la vida: una sonrisa, un abrazo cálido, un buen libro. Aprende a apreciarlas.",
     "date": "2023-06-23",
     "likes": 15,
     "retweets": 3,
-    "title": "Recomendación de libros"
+    "title": "Las cosas simples de la vida"
   },
   {
     "id": 9,
-    "username": "Sofía",
+    "username": "Alejandro",
     "body": "El respeto es la base de cualquier relación sólida. Trata a los demás como te gustaría ser tratado.",
     "date": "2023-06-23",
     "likes": 15,
     "retweets": 3,
-    "title": "Recomendación de libros"
+    "title": "El respeto"
   },
   {
     "id": 10,
-    "username": "Sofía",
+    "username": "Manuel",
     "body": "No dejes que el miedo te detenga. Sal de tu zona de confort y descubre todo lo que el mundo tiene para ofrecerte.",
     "date": "2023-06-23",
     "likes": 15,
     "retweets": 3,
-    "title": "Recomendación de libros"
+    "title": "Zona de confort"
   },
   {
     "id": 11,
-    "username": "Sofía",
+    "username": "Carmen",
     "body": "La verdadera belleza viene de dentro. Cultiva tu alma y brilla con luz propia.",
     "date": "2023-06-23",
     "likes": 15,
     "retweets": 3,
-    "title": "Recomendación de libros"
+    "title": "Tu luz propria"
   },
   {
     "id": 12,
-    "username": "Sofía",
+    "username": "Javier",
     "body": "La mejor inversión que puedes hacer es en ti mismo. Aprende, crece y conviértete en la mejor versión de ti.",
     "date": "2023-06-23",
     "likes": 15,
     "retweets": 3,
-    "title": "Recomendación de libros"
+    "title": "La mejor versión de ti"
   },
   {
     "id": 13,
-    "username": "Sofía",
+    "username": "Laura",
     "body": "No esperes a que llegue el momento perfecto. ¡Crea tus propias oportunidades y haz que suceda",
     "date": "2023-06-23",
     "likes": 15,
     "retweets": 3,
-    "title": "Recomendación de libros"
+    "title": "No hay momento perfecto"
   },
   {
     "id": 14,
-    "username": "Sofía",
+    "username": "Pedro",
     "body": "La vida es como una bicicleta, para mantener el equilibrio debes seguir adelante.",
     "date": "2023-06-23",
     "likes": 15,
     "retweets": 3,
-    "title": "Recomendación de libros"
+    "title": "Vida y bicicleta"
   },
   {
     "id": 15,
-    "username": "Sofía",
+    "username": "Gabriela",
     "body": "No importa cuántas veces te caigas, lo importante es cuántas veces te levantes y sigas luchando.",
     "date": "2023-06-23",
     "likes": 15,
     "retweets": 3,
-    "title": "Recomendación de libros"
+    "title": "Sigas luchando"
   },
   {
     "id": 16,
-    "username": "Sofía",
+    "username": "Diego",
     "body": "Las oportunidades no ocurren, las creas. Trabaja duro y persigue tus sueños sin descanso.",
     "date": "2023-06-23",
     "likes": 15,
     "retweets": 3,
-    "title": "Recomendación de libros"
+    "title": "Trabajo duro"
   },
   {
     "id": 17,
-    "username": "Sofía",
+    "username": "Sergio",
     "body": "El éxito no es el final, el fracaso no es fatal, lo que cuenta es el coraje para seguir adelante.",
     "date": "2023-06-23",
     "likes": 15,
     "retweets": 3,
-    "title": "Recomendación de libros"
+    "title": "Adelante"
   },
   {
     "id": 18,
-    "username": "Sofía",
+    "username": "Valentina",
     "body": "La gratitud transforma lo que tenemos en suficiente. Agradece cada día por las pequeñas cosas de la vida.",
     "date": "2023-06-23",
     "likes": 15,
     "retweets": 3,
-    "title": "Recomendación de libros"
+    "title": "La gratitud"
   },
   {
     "id": 19,
-    "username": "Sofía",
+    "username": "Isabela",
     "body": "El amor es el idioma universal que todos podemos entender. Ama sin medida y verás cómo el mundo cambia a tu alrededor.",
     "date": "2023-06-23",
     "likes": 15,
     "retweets": 3,
-    "title": "Recomendación de libros"
+    "title": "El amor"
   },
   {
     "id": 20,
-    "username": "Sofía",
+    "username": "Andres",
     "body": "No te compares con los demás, cada persona tiene su propio camino y su propio ritmo. Sigue tu propio camino y sé auténtico.",
     "date": "2023-06-23",
     "likes": 15,
     "retweets": 3,
-    "title": "Recomendación de libros"
+    "title": "Tu camino y tu ritmo"
   },
   {
     "id": 21,
@@ -186,6 +186,6 @@
     "date": "2023-06-23",
     "likes": 15,
     "retweets": 3,
-    "title": "Recomendación de libros"
+    "title": "La vida es corta"
   }
 ]
