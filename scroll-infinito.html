@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="sp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Infinito</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+    <h1>Scroll Infinito</h1>
+    <div class="row">
+      <div class="card mb-2">
+        <div class="card-body">
+          <h5 class="card-title">Titulo da Postagem</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">Autor do post</h6>
+          <p>Magna officia elit cillum labore qui. Incididunt dolor nostrud sunt deserunt nostrud amet est ea. Pariatur ea magna minim commodo dolore ullamco nisi dolore ut culpa.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.onscroll = function () {
+      if (window.pageYOffset + window.innerHeight >= window.document.body.offsetHeight) {
+        loadMoreContent()
+      }
+    }
+
+    function loadMoreContent() {
+      const content = getContent()
+
+      const cardsHtml = []
+      for (const { username, body, date, likes, retweets, title } of content) {
+        const cardHtml = `<div class="row">
+          <div class="card mb-2">
+            <div class="card-body">
+              <h5 class="card-title">${title}</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">${username}</h6>
+              <p>${body}</p>
+            </div>
+          </div>
+        </div>`
+
+        cardsHtml.push(cardHtml)
+      }
+
+      document.querySelector('div.container').insertAdjacentHTML('beforeend', cardsHtml.join('\n'))
+    }
+
+    function getContent() {
+      const fieldQuantity = 10
+      const tweets = [
+        {
+          id: 1,
+          username: "María",
+          body: "¡Hola mundo! Esto es un tweet de ejemplo.",
+          date: "2023-06-25",
+          likes: 10,
+          retweets: 5,
+          title: "El primer tweet"
+        },
+        {
+          id: 2,
+          username: "Alejandro",
+          body: "Estoy emocionado por el partido de fútbol esta noche. ¡Vamos equipo!",
+          date: "2023-06-24",
+          likes: 20,
+          retweets: 8,
+          title: "Partido de fútbol"
+        },
+        {
+          id: 3,
+          username: "Sofía",
+          body: "Acabo de terminar de leer un libro increíble. ¡Altamente recomendado!",
+          date: "2023-06-23",
+          likes: 15,
+          retweets: 3,
+          title: "Recomendación de libros"
+        }
+      ];
+
+      const content = [];
+      
+      for(let i = 0; i < fieldQuantity; i++) {
+        content.push(tweets[randomIntBetween(0, tweets.length)])
+      }
+
+      return content;
+    }
+
+    function randomIntBetween(start, end) {
+      return start + Math.floor(Math.random() * (end - start))
+    }
+
+    loadMoreContent()
+  </script>
+</body>
+</html>
