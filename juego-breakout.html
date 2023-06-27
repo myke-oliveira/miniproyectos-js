@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="sp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juego Breackout</title>
+  <style>
+    body {
+      margin: 0;
+    }
+    .game-board {
+      margin: 10px;
+      border: 1px solid #000;
+      width: 1200px;
+      height: 800px;
+    }
+
+    .red {
+      background: red;
+    }
+
+    .green {
+      background: green;
+    }
+
+    .yellow {
+      background: yellow;
+    }
+
+    .block {
+      border: 1px solid #000;
+      width: 100px;
+      height: 20px;
+      position: absolute;
+    }
+
+    .player {
+      border: 1px solid #000;
+      width: 200px;
+      height: 20px;
+      position: absolute;
+      background: blue;
+    }
+
+    .projectile {
+      border: 1px solid #000;
+      width: 15px;
+      height: 15px;
+      position: absolute;
+      background: gray;
+    }
+  </style>
+</head>
+<body>
+  <div class="game-board">
+    <div class="red block" style="top: 60px; left: 55px"></div>
+    <div class="red block" style="top: 60px; left: 165px"></div>
+    <div class="red block" style="top: 60px; left: 275px"></div>
+    <div class="red block" style="top: 60px; left: 385px"></div>
+    <div class="red block" style="top: 60px; left: 495px"></div>
+    <div class="red block" style="top: 60px; left: 605px"></div>
+    <div class="red block" style="top: 60px; left: 715px"></div>
+    <div class="red block" style="top: 60px; left: 825px"></div>
+    <div class="red block" style="top: 60px; left: 935px"></div>
+    <div class="red block" style="top: 60px; left: 1045px"></div>
+    <div class="yellow block" style="top: 100px; left: 55px"></div>
+    <div class="yellow block" style="top: 100px; left: 165px"></div>
+    <div class="yellow block" style="top: 100px; left: 275px"></div>
+    <div class="yellow block" style="top: 100px; left: 385px"></div>
+    <div class="yellow block" style="top: 100px; left: 495px"></div>
+    <div class="yellow block" style="top: 100px; left: 605px"></div>
+    <div class="yellow block" style="top: 100px; left: 715px"></div>
+    <div class="yellow block" style="top: 100px; left: 825px"></div>
+    <div class="yellow block" style="top: 100px; left: 935px"></div>
+    <div class="yellow block" style="top: 100px; left: 1045px"></div>
+    <div class="green block" style="top: 140px; left: 55px"></div>
+    <div class="green block" style="top: 140px; left: 165px"></div>
+    <div class="green block" style="top: 140px; left: 275px"></div>
+    <div class="green block" style="top: 140px; left: 385px"></div>
+    <div class="green block" style="top: 140px; left: 495px"></div>
+    <div class="green block" style="top: 140px; left: 605px"></div>
+    <div class="green block" style="top: 140px; left: 715px"></div>
+    <div class="green block" style="top: 140px; left: 825px"></div>
+    <div class="green block" style="top: 140px; left: 935px"></div>
+    <div class="green block" style="top: 140px; left: 1045px"></div>
+    <div class="red block" style="top: 180px; left: 55px"></div>
+    <div class="red block" style="top: 180px; left: 165px"></div>
+    <div class="red block" style="top: 180px; left: 275px"></div>
+    <div class="red block" style="top: 180px; left: 385px"></div>
+    <div class="red block" style="top: 180px; left: 495px"></div>
+    <div class="red block" style="top: 180px; left: 605px"></div>
+    <div class="red block" style="top: 180px; left: 715px"></div>
+    <div class="red block" style="top: 180px; left: 825px"></div>
+    <div class="red block" style="top: 180px; left: 935px"></div>
+    <div class="red block" style="top: 180px; left: 1045px"></div>
+    <div class="yellow block" style="top: 220px; left: 55px"></div>
+    <div class="yellow block" style="top: 220px; left: 165px"></div>
+    <div class="yellow block" style="top: 220px; left: 275px"></div>
+    <div class="yellow block" style="top: 220px; left: 385px"></div>
+    <div class="yellow block" style="top: 220px; left: 495px"></div>
+    <div class="yellow block" style="top: 220px; left: 605px"></div>
+    <div class="yellow block" style="top: 220px; left: 715px"></div>
+    <div class="yellow block" style="top: 220px; left: 825px"></div>
+    <div class="yellow block" style="top: 220px; left: 935px"></div>
+    <div class="yellow block" style="top: 220px; left: 1045px"></div>
+    <div class="green block" style="top: 260px; left: 55px"></div>
+    <div class="green block" style="top: 260px; left: 165px"></div>
+    <div class="green block" style="top: 260px; left: 275px"></div>
+    <div class="green block" style="top: 260px; left: 385px"></div>
+    <div class="green block" style="top: 260px; left: 495px"></div>
+    <div class="green block" style="top: 260px; left: 605px"></div>
+    <div class="green block" style="top: 260px; left: 715px"></div>
+    <div class="green block" style="top: 260px; left: 825px"></div>
+    <div class="green block" style="top: 260px; left: 935px"></div>
+    <div class="green block" style="top: 260px; left: 1045px"></div>
+    <div class="player" style="top: 750px; left: 500px"></div>
+    <div class="projectile" style="top: 500px; left: 550px"></div>
+  </div>
+  <div></div>
+  <script>
+    const FPS = 60;
+    const TIME_INCREMENT = 1000/FPS;
+    let time = 0;
+
+    const blocks = []
+  
+    setInterval(() => {
+      time++;
+      console.log(time);
+    }, TIME_INCREMENT);
+  </script>
+</body>
+</html>
