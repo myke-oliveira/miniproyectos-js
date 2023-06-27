@@ -53,80 +53,98 @@
 </head>
 <body>
   <div class="game-board">
-    <div class="red block" style="top: 60px; left: 55px"></div>
-    <div class="red block" style="top: 60px; left: 165px"></div>
-    <div class="red block" style="top: 60px; left: 275px"></div>
-    <div class="red block" style="top: 60px; left: 385px"></div>
-    <div class="red block" style="top: 60px; left: 495px"></div>
-    <div class="red block" style="top: 60px; left: 605px"></div>
-    <div class="red block" style="top: 60px; left: 715px"></div>
-    <div class="red block" style="top: 60px; left: 825px"></div>
-    <div class="red block" style="top: 60px; left: 935px"></div>
-    <div class="red block" style="top: 60px; left: 1045px"></div>
-    <div class="yellow block" style="top: 100px; left: 55px"></div>
-    <div class="yellow block" style="top: 100px; left: 165px"></div>
-    <div class="yellow block" style="top: 100px; left: 275px"></div>
-    <div class="yellow block" style="top: 100px; left: 385px"></div>
-    <div class="yellow block" style="top: 100px; left: 495px"></div>
-    <div class="yellow block" style="top: 100px; left: 605px"></div>
-    <div class="yellow block" style="top: 100px; left: 715px"></div>
-    <div class="yellow block" style="top: 100px; left: 825px"></div>
-    <div class="yellow block" style="top: 100px; left: 935px"></div>
-    <div class="yellow block" style="top: 100px; left: 1045px"></div>
-    <div class="green block" style="top: 140px; left: 55px"></div>
-    <div class="green block" style="top: 140px; left: 165px"></div>
-    <div class="green block" style="top: 140px; left: 275px"></div>
-    <div class="green block" style="top: 140px; left: 385px"></div>
-    <div class="green block" style="top: 140px; left: 495px"></div>
-    <div class="green block" style="top: 140px; left: 605px"></div>
-    <div class="green block" style="top: 140px; left: 715px"></div>
-    <div class="green block" style="top: 140px; left: 825px"></div>
-    <div class="green block" style="top: 140px; left: 935px"></div>
-    <div class="green block" style="top: 140px; left: 1045px"></div>
-    <div class="red block" style="top: 180px; left: 55px"></div>
-    <div class="red block" style="top: 180px; left: 165px"></div>
-    <div class="red block" style="top: 180px; left: 275px"></div>
-    <div class="red block" style="top: 180px; left: 385px"></div>
-    <div class="red block" style="top: 180px; left: 495px"></div>
-    <div class="red block" style="top: 180px; left: 605px"></div>
-    <div class="red block" style="top: 180px; left: 715px"></div>
-    <div class="red block" style="top: 180px; left: 825px"></div>
-    <div class="red block" style="top: 180px; left: 935px"></div>
-    <div class="red block" style="top: 180px; left: 1045px"></div>
-    <div class="yellow block" style="top: 220px; left: 55px"></div>
-    <div class="yellow block" style="top: 220px; left: 165px"></div>
-    <div class="yellow block" style="top: 220px; left: 275px"></div>
-    <div class="yellow block" style="top: 220px; left: 385px"></div>
-    <div class="yellow block" style="top: 220px; left: 495px"></div>
-    <div class="yellow block" style="top: 220px; left: 605px"></div>
-    <div class="yellow block" style="top: 220px; left: 715px"></div>
-    <div class="yellow block" style="top: 220px; left: 825px"></div>
-    <div class="yellow block" style="top: 220px; left: 935px"></div>
-    <div class="yellow block" style="top: 220px; left: 1045px"></div>
-    <div class="green block" style="top: 260px; left: 55px"></div>
-    <div class="green block" style="top: 260px; left: 165px"></div>
-    <div class="green block" style="top: 260px; left: 275px"></div>
-    <div class="green block" style="top: 260px; left: 385px"></div>
-    <div class="green block" style="top: 260px; left: 495px"></div>
-    <div class="green block" style="top: 260px; left: 605px"></div>
-    <div class="green block" style="top: 260px; left: 715px"></div>
-    <div class="green block" style="top: 260px; left: 825px"></div>
-    <div class="green block" style="top: 260px; left: 935px"></div>
-    <div class="green block" style="top: 260px; left: 1045px"></div>
-    <div class="player" style="top: 750px; left: 500px"></div>
-    <div class="projectile" style="top: 500px; left: 550px"></div>
+    
   </div>
   <div></div>
   <script>
+
     const FPS = 60;
     const TIME_INCREMENT = 1000/FPS;
     let time = 0;
 
-    const blocks = []
+    const colors = ['red', 'yellow', 'green'];
+    const blocks = [];
+
+    const x0 = 55;
+    const y0 = 60;
+    const deltaX = 110;
+    const deltaY = 40;
+    const playerStep = 10;
+
+    const projectile = {
+      x: 550,
+      y: 500,
+      vx: 1,
+      vy: 1,
+      height: 15,
+      width: 15,
+    }
+
+    const player = {
+      x: 550,
+      y: 750,
+      height: 20,
+      width: 200,
+      action: {
+        ArrowRight: () => {
+          player.x += playerStep;
+        },
+        ArrowLeft: () => {
+          player.x -= playerStep;
+        }
+      }
+    }
+
+    for (let i = 0; i < 6; i++) {
+      let color = colors[i % 3];
+      for (let j  = 0; j  < 10; j ++) {
+        const block = {
+          x: x0 + j * deltaX,
+          y: y0 + i * deltaY,
+          color,
+          height: 20,
+          width: 100,
+        }
+        blocks.push(block)
+      }
+    }
+
+    elementsHTML = [];
+    for (const { x, y, color } of blocks) {
+      const blockHTML = `<div class="${color} block" style="top: ${y}px; left: ${x}px"></div>`;
+      elementsHTML.push(blockHTML);
+    }
+    const playerHTML = `<div class="player" style="top: ${player.y}px; left: ${player.x}px"></div>`;
+    elementsHTML.push(playerHTML);
+    const projectileHTML = `<div class="projectile" style="top: ${projectile.y}px; left: ${projectile.x}px"></div>`;
+    elementsHTML.push(projectileHTML);
+    document.querySelector('div.game-board').insertAdjacentHTML('afterBegin', elementsHTML.join(''));
+
+    document.onkeydown = function (event) {
+      const { key } = event;
+      player.action[key] ();
+      document.querySelector('div.player').style.top = `${player.y}px`;
+      document.querySelector('div.player').style.left = `${player.x}px`;
+    }
+
+    function collision(body1, body2) {
+      return body1.x <= body2.x && body2.x <= body1.x + body1.width && body1.y <= body2.y && body2.y <= body1.y + body1.height
+        || body1.x <= body2.x + body2.width && body2.x + body2.width <= body1.x + body1.width && body1.y <= body2.y && body2.y <= body1.y + body1.height
+        || body1.x <= body2.x + body2.width && body2.x + body2.width <= body1.x + body1.width && body1.y <= body2.y + body2.height && body2.y + body2.height <= body1.y + body1.height
+        || body1.x <= body2.x && body2.x <= body1.x + body1.width && body1.y <= body2.y + body2.height && body2.y + body2.height <= body1.y + body1.height
+    }
+
   
     setInterval(() => {
-      time++;
-      console.log(time);
+      projectile.x += projectile.vx;
+      projectile.y += projectile.vy;
+      document.querySelector('.projectile').style.top = `${projectile.y}px`;
+      document.querySelector('.projectile').style.left = `${projectile.x}px`;
+
+      if (collision(projectile, player)) {
+        console.log(`DEU COLISAO`)
+        projectile.vy = -projectile.vy;
+      }
     }, TIME_INCREMENT);
   </script>
 </body>
