@@ -122,7 +122,7 @@
 
     document.onkeydown = function (event) {
       const { key } = event;
-      player.action[key] ();
+      player.action[key]();
       document.querySelector('div.player').style.top = `${player.y}px`;
       document.querySelector('div.player').style.left = `${player.x}px`;
     }
@@ -132,18 +132,25 @@
         || body1.x <= body2.x + body2.width && body2.x + body2.width <= body1.x + body1.width && body1.y <= body2.y && body2.y <= body1.y + body1.height
         || body1.x <= body2.x + body2.width && body2.x + body2.width <= body1.x + body1.width && body1.y <= body2.y + body2.height && body2.y + body2.height <= body1.y + body1.height
         || body1.x <= body2.x && body2.x <= body1.x + body1.width && body1.y <= body2.y + body2.height && body2.y + body2.height <= body1.y + body1.height
+        || body2.x <= body1.x && body1.x <= body2.x + body2.width && body2.y <= body1.y && body1.y <= body2.y + body2.height
+        || body2.x <= body1.x + body1.width && body1.x + body1.width <= body2.x + body2.width && body2.y <= body1.y && body1.y <= body2.y + body2.height
+        || body2.x <= body1.x + body1.width && body1.x + body1.width <= body2.x + body2.width && body2.y <= body1.y + body1.height && body1.y + body1.height <= body2.y + body2.height
+        || body2.x <= body1.x && body1.x <= body2.x + body2.width && body2.y <= body1.y + body1.height && body1.y + body1.height <= body2.y + body2.height
     }
 
   
-    setInterval(() => {
+    const interval = setInterval(() => {
       projectile.x += projectile.vx;
       projectile.y += projectile.vy;
       document.querySelector('.projectile').style.top = `${projectile.y}px`;
       document.querySelector('.projectile').style.left = `${projectile.x}px`;
 
       if (collision(projectile, player)) {
-        console.log(`DEU COLISAO`)
         projectile.vy = -projectile.vy;
+      }
+
+      if (projectile.y > 810) {
+        clearInterval(interval);
       }
     }, TIME_INCREMENT);
   </script>
