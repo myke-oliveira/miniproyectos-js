@@ -158,7 +158,98 @@
     }
 
     function collisionDirection(projectile, obstacle) {
+      const projectilePoints = {
+        x: projectile.x,
+        y: projectile.y,
+      };
 
+      const projectilePoint2 = {
+        x: projectile.x + projectile.width,
+        y: projectile.y + projectile.height,
+      };
+
+      const obstacleBottomEdgeFacePoints = [
+        {
+          x: obstacle.x,
+          y: obstacle.y + obstacle.height,
+        },
+        {
+          x: obstacle.x + obstacle.width,
+          y: obstacle.y + obstacle.height,
+        },
+      ];
+
+      const obstacleRightEdgeFacePoints = [
+        {
+          x: obstacle.x + obstacle.width,
+          y: obstacle.y,
+        },
+        {
+          x: obstacle.x + obstacle.width,
+          y: obstacle.y + obstacle.height
+        },
+      ];
+
+      const obstacleTopEdgeFacePoints = [
+        {
+          x: obstacle.x,
+          y: obstacle.y,
+        },
+        {
+          x: obstacle.x + obstacle.width,
+          y: obstacle.y,
+        },
+      ];
+
+      const obstacleLeftEdgeFacePoints = [
+        {
+          x: obstacle.x,
+          y: obstacle.y,
+        },
+        {
+          x: obstacle.x,
+          y: obstacle.y + obstacle.height
+        },
+      ];
+
+      const bottomCollisionMatrix = [
+        [projectilePoint1.x, projectilePoint1.y, 1],
+        [obstacleBottomEdgeFacePoints[0].x, obstacleBottomEdgeFacePoints[0].y, 1],
+        [obstacleBottomEdgeFacePoints[1].x, obstacleBottomEdgeFacePoints[1].y, 1],
+      ];
+
+      const topCollisionMatrix = [
+        [projectilePoint2.x, projectilePoint2.y, 1],
+        [obstacleTopEdgeFacePoints[0].x, obstacleTopEdgeFacePoints[0].y, 1],
+        [obstacleTopEdgeFacePoints[1].x, obstacleTopEdgeFacePoints[1].y, 1],
+      ];
+
+      const leftCollisionMatrix = [
+        [projectilePoint2.x, projectilePoint2.y, 1],
+        [obstacleLeftEdgeFacePoints[0].x, obstacleLeftEdgeFacePoints[0].y, 1],
+        [obstacleLeftEdgeFacePoints[1].x, obstacleLeftEdgeFacePoints[1].y, 1],
+      ];
+
+      const rightCollisionMatrix = [
+        [projectilePoint1.x, projectilePoint1.y, 1],
+        [obstacleRightEdgeFacePoints[0].x, obstacleRightEdgeFacePoints[0].y, 1],
+        [obstacleRightEdgeFacePoints[1].x, obstacleRightEdgeFacePoints[1].y, 1],
+      ];
+
+      const bottomCollision = determinant(bottomCollisionMatrix);
+      const topCollision = determinant(topCollisionMatrix);
+      const leftCollision = determinant(leftCollisionMatrix);
+      const rightCollision = determinant(rightCollisionMatrix);
+
+      if (
+        bottomCollision <= topCollision && bottomCollision <= leftCollision && bottomCollision <= rightCollision
+        ||
+        topCollision <= bottomCollision && bottomCollision <= leftCollision && bottomCollision <= rightCollision
+      ) {
+        return 'vertical';
+      }
+
+      return 'horizontal';
     }
 
     function didUserWin() {
@@ -213,10 +304,10 @@
             document.querySelector('#you-won').style.display = 'inline';
           }
           const direction = collisionDirection(projectile, block);
-          if (direction.horizontal) {
+          if (direction == 'horizontal') {
             projectile.vx = -projectile.vx;
           }
-          if (direction.vertical) {
+          if (direction == 'vertical') {
             projectile.vy = -projectile.vy;
           }
         }
