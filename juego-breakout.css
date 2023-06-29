@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+}
+
+.game-board {
+  margin: 10px;
+  border: 1px solid #000;
+  width: 1200px;
+  height: 800px;
+}
+
+.red {
+  background: red;
+}
+
+.green {
+  background: green;
+}
+
+.yellow {
+  background: yellow;
+}
+
+.block {
+  border: 1px solid #000;
+  width: 100px;
+  height: 20px;
+  position: absolute;
+}
+
+.player {
+  border: 1px solid #000;
+  width: 200px;
+  height: 20px;
+  position: absolute;
+  background: blue;
+}
+
+.projectile {
+  border: 1px solid #000;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  background: gray;
+}
