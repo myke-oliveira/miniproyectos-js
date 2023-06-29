@@ -53,7 +53,8 @@
 </head>
 <body>
   <div class="game-board"></div>
-  <div></div>
+  <h1 id="you-lost" style="display: none;">¡Perdiste!</h1>
+  <h1 id="you-won" style="display: none;">¡Ganaste!</h1>
   <script>
 
     const WIDTH = 1200;
@@ -125,7 +126,7 @@
       }
     }
 
-    elementsHTML = [];
+    const elementsHTML = [];
     for (const { id, x, y, color } of blocks) {
       const blockHTML = `<div id="${id}" class="${color} block" style="top: ${y}px; left: ${x}px"></div>`;
       elementsHTML.push(blockHTML);
@@ -138,8 +139,6 @@
 
     document.onkeydown = function (event) {
       const { key } = event;
-
-      
 
       player.action[key]();
 
@@ -159,36 +158,38 @@
     }
 
     function collisionDirection(projectile, obstacle) {
-      
+
     }
 
-  function determinant(matrix) {
-    if (matrix.length !== matrix[0].length) {
-      throw new Error('The matrix must be square.');
+    function didUserWin() {
+      return blocks.length === 0;
     }
 
-    if (matrix.length === 2 && matrix[0].length === 2) {
-      return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
-    }
-
-    let result = 0;
-
-    for (let i = 0; i < matrix.length; i++) {
-      const subMatrix = [];
-      for (let j = 1; j < matrix.length; j++) {
-        subMatrix.push(matrix[j].filter((_, index) => index !== i));
+    function determinant(matrix) {
+      if (matrix.length !== matrix[0].length) {
+        throw new Error('The matrix must be square.');
       }
 
-      const subDeterminant = determinant(subMatrix);
+      if (matrix.length === 2 && matrix[0].length === 2) {
+        return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
+      }
 
-      result += (i % 2 === 0 ? 1 : -1) * matrix[0][i] * subDeterminant;
+      let result = 0;
+
+      for (let i = 0; i < matrix.length; i++) {
+        const subMatrix = [];
+        for (let j = 1; j < matrix.length; j++) {
+          subMatrix.push(matrix[j].filter((_, index) => index !== i));
+        }
+
+        const subDeterminant = determinant(subMatrix);
+
+        result += (i % 2 === 0 ? 1 : -1) * matrix[0][i] * subDeterminant;
+      }
+
+      return result;
     }
 
-    return result;
-  }
-
-
-  
     const interval = setInterval(() => {
       projectile.x += projectile.vx;
       projectile.y += projectile.vy;
@@ -207,6 +208,10 @@
         if (collision(projectile, block)) {
           blocks.splice(blocks.indexOf(block), 1);
           document.querySelector(`#${block.id}`).style.display = 'none';
+          if (didUserWin()) {
+            clearInterval(interval);
+            document.querySelector('#you-won').style.display = 'inline';
+          }
           const direction = collisionDirection(projectile, block);
           if (direction.horizontal) {
             projectile.vx = -projectile.vx;
@@ -217,8 +222,9 @@
         }
       }
 
-      if (projectile.y + projectile.height > 810) {
+      if (projectile.y + projectile.height >= HEIGHT + MARGIN) {
         clearInterval(interval);
+        document.querySelector('#you-lost').style.display = 'inline';
       }
     }, TIME_INCREMENT);
   </script>
