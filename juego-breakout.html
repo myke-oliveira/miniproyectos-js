@@ -56,6 +56,10 @@
   <div></div>
   <script>
 
+    const WIDTH = 1200;
+    const HEIGHT = 800;
+    const MARGIN = 10;
+
     const FPS = 60;
     const TIME_INCREMENT = 1000/FPS;
     let time = 0;
@@ -85,10 +89,23 @@
       width: 200,
       action: {
         ArrowRight: () => {
+          const maxX = WIDTH + MARGIN - player.width;
+
           player.x += playerStep;
+
+          if (player.x >= maxX) {
+            player.x = maxX;
+          }
+
         },
         ArrowLeft: () => {
+          const minX = MARGIN;
+
           player.x -= playerStep;
+
+          if (player.x <+ minX) {
+            player.x = minX;
+          }
         }
       }
     }
@@ -121,7 +138,11 @@
 
     document.onkeydown = function (event) {
       const { key } = event;
+
+      
+
       player.action[key]();
+
       document.querySelector('div.player').style.top = `${player.y}px`;
       document.querySelector('div.player').style.left = `${player.x}px`;
     }
